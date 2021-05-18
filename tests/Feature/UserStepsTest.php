@@ -22,7 +22,12 @@ class UserSteps extends TestCase
 
         $user = User::factory()->create();
 
-        $braintree = config('braintree');
+        $braintree = new \Braintree\Gateway([
+            'environment' => 'sandbox',
+            'merchantId' => 'knxt7b49dt53bwtx',
+            'publicKey' => 'x464fs35n6s9prt9',
+            'privateKey' => '5af38d67bae3bedb8c2bc41aeae85a06'
+        ]);
 
         $result = $braintree->customer()->create([
             'firstName' => $user->name,
@@ -48,7 +53,12 @@ class UserSteps extends TestCase
 
         $user = User::factory()->create();
 
-        $braintree = config('braintree');
+        $braintree = new \Braintree\Gateway([
+            'environment' => 'sandbox',
+            'merchantId' => 'knxt7b49dt53bwtx',
+            'publicKey' => 'x464fs35n6s9prt9',
+            'privateKey' => '5af38d67bae3bedb8c2bc41aeae85a06'
+        ]);
 
         $result = $braintree->customer()->create([
             'firstName' => $user->name,

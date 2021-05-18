@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\GatewayController;
 use App\Http\Controllers\API\TransactionController;
+use App\Http\Controllers\API\PesquisaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,6 @@ Route::group(['domain'=> config('app.url'), 'middleware' => 'auth:api'], functio
 });
 
 Route::post('/transaction/update', [TransactionController::class, 'update']);
+
+Route::get('/questoes', [PesquisaController::class, 'index']);
+Route::get('/questoes/{id}', [PesquisaController::class, 'perguntas']);

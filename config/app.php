@@ -56,6 +56,12 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    //BRAINTREE
+    'braintree_env' => env('BRAINTREE_ENV', null),
+    'braintree_merchant_id' => env('BRAINTREE_MERCHANT_ID', null),
+    'braintree_public_key' => env('BRAINTREE_PUBLIC_KEY', null),
+    'braintree_private_key' => env('BRAINTREE_PRIVATE_KEY', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

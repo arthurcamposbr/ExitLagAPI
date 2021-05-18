@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Validator;
 
 class TransactionController extends Controller
 {
+
+    public function __construct(){
+        $this->braintree = new \Braintree\Gateway([
+            'environment' => config('app.braintree_env'),
+            'merchantId' => config('app.braintree_merchant_id'),
+            'publicKey' => config('app.braintree_public_key'),
+            'privateKey' => config('app.braintree_private_key')
+        ]);
+    }
+
     /**
      * Exibe transações efetuadas.
      */
@@ -80,7 +90,7 @@ class TransactionController extends Controller
          * Conecta ao Braintree.
          */
 
-        $braintree = config('braintree');
+        $braintree = $this->braintree;
 
         /**
          * Registra o cartão de crédito.
@@ -154,7 +164,7 @@ class TransactionController extends Controller
             /**
              * Conecta ao Braintree.
              */
-            $braintree = config('braintree');
+            $braintree = $this->braintree;
 
             $sub_id = $validaTransaction[0]['code'];
 
@@ -178,7 +188,7 @@ class TransactionController extends Controller
          * Conecta ao Braintree.
          */
 
-        $braintree = config('braintree');
+        $braintree = $this->braintree;
 
         /**
          * Parse Webhook

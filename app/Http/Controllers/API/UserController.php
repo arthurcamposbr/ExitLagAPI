@@ -6,12 +6,24 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\User;
+use App\Models\Questoe;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Faker\Generator as Faker;
 
 class UserController extends Controller
 {
+
+    public function __construct(){
+        $this->braintree = new \Braintree\Gateway([
+            'environment' => config('app.braintree_env'),
+            'merchantId' => config('app.braintree_merchant_id'),
+            'publicKey' => config('app.braintree_public_key'),
+            'privateKey' => config('app.braintree_private_key')
+        ]);
+    }
+
     /**
      * Exibe dados do usuário.
      */
@@ -89,7 +101,7 @@ class UserController extends Controller
             'remember_token' => Str::random(40)
         ]);
 
-        $braintree = config('braintree');
+        $braintree = $this->braintree;
 
         $result = $braintree->customer()->create([
             'firstName' => $data['name'],

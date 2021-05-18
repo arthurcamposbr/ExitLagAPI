@@ -26,13 +26,13 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Support\Facades\Schema::defaultStringLength(191);
 
         /* Configuração Braintree */
-        $environment = env('BRAINTREE_ENV');
+        /*$environment = config('app.braintree_env');
         $braintree = new \Braintree\Gateway([
-            'environment' => $environment,
-            'merchantId' => env('BRAINTREE_MERCHANT_ID'),
-            'publicKey' => env('BRAINTREE_PUBLIC_KEY'),
-            'privateKey' => env('BRAINTREE_PRIVATE_KEY')
+            'environment' => config('app.braintree_env'),
+            'merchantId' => config('app.braintree_merchant_id'),
+            'publicKey' => config('app.braintree_public_key'),
+            'privateKey' => config('app.braintree_private_key')
         ]);
-        config(['braintree' => $braintree]);
+        config(['braintree' => $braintree]);*/
     }
 }
