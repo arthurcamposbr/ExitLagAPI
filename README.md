@@ -11,3 +11,5 @@ Segue abaixo links para testes e documentação da API:
 Foi integrado o Braintree SDK.
 
 Antes de iniciar o projeto localmente, execute um comando seed para criar o gateway padrão no banco de dados.
+
+No .env.exemple já tem as chaves sandbox da minha conta de teste.
